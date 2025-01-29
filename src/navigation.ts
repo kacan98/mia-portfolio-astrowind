@@ -2,6 +2,16 @@ import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
 
 export const headerData = {
   links: [
+    { text: 'Hjem', href: '' },
+    { text: 'Om mig', href: '/#about' },
+    { text: 'Resume', href: '/#resume' },
+    { text: 'Porfolio', href: '/#porfolio' },
+    { text: 'Blog', href: '/#blog' },
+  ],
+};
+
+export const originalHeader = {
+  links: [
     {
       text: 'Homes',
       links: [
@@ -117,8 +127,25 @@ export const headerData = {
   ],
   actions: [{ text: 'Download', href: 'https://github.com/onwidget/astrowind', target: '_blank' }],
 };
-
 export const footerData = {
+  links: [],
+  secondaryLinks: [
+    { text: 'Terms', href: getPermalink('/terms') },
+    { text: 'Privacy Policy', href: getPermalink('/privacy') },
+  ],
+  socialLinks: [
+    { ariaLabel: 'X', icon: 'tabler:brand-x', href: '#' },
+    { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: '#' },
+    { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: '#' },
+    { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
+    { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/onwidget/astrowind' },
+  ],
+  footNote: `
+    Made by <a class="text-blue-600 underline dark:text-muted" href="https://www.linkedin.com/in/kcancara/" target="_blank"> Karel Čančara</a> · All rights reserved.
+  `,
+};
+
+export const originalFooterData = {
   links: [
     {
       title: 'Product',

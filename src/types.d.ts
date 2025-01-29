@@ -60,7 +60,7 @@ export interface MetaData {
   description?: string;
 
   openGraph?: MetaDataOpenGraph;
-  twitter?: MetaDataTwitter;
+  // twitter?: MetaDataTwitter;
 }
 
 export interface MetaDataRobots {
