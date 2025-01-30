@@ -1,17 +1,16 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 
+import drawing1 from '~/assets/images/mia/drawing/2.webp';
+import fridgeMagnets from '~/assets/images/mia/fridge-magnets.jpeg';
+import miaProfile from '~/assets/images/mia/profile.jpeg';
+import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Content from '~/components/widgets/Content.astro';
+import Features3 from '~/components/widgets/Features3.astro';
 import Header from '~/components/widgets/Header.astro';
 import Hero from '~/components/widgets/Hero.astro';
-import Content from '~/components/widgets/Content.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
-import Features3 from '~/components/widgets/Features3.astro';
 import Steps from '~/components/widgets/Steps.astro';
-import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
-import { getPermalink } from '~/utils/permalinks';
-import miaProfile from '~/assets/images/mia/profile.jpeg';
-import fridgeMagnets from '~/assets/images/mia/fridge-magnets.jpeg';
-import drawing1 from '~/assets/images/mia/drawing/2.webp';
 import { headerData } from '~/navigation';
 
 const metadata = {
@@ -28,10 +27,10 @@ const miaMailTo = 'mailto:minna.svensson1@gmail.com';
       actions={[
         {
           text: 'Låt oss prata',
-          href: miaMailTo,
+          href: miaMailTo
         },
       ]}
-      position="right"
+      position="left"
       isSticky
       showToggleTheme
     />
