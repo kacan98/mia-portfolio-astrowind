@@ -11,7 +11,7 @@ metadata:
   title:
     default: Mia Svensson
     template: '%s | Portfolio'
-  description: "\U0001F680 Young Journalist, Podcaster and Human"
+  description: "\U0001F4DA Young Journalist, Podcaster and Human"
   robots:
     index: true
     follow: true

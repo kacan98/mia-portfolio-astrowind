@@ -3,13 +3,14 @@ import Layout from '~/layouts/PageLayout.astro';
 
 import drawing1 from '~/assets/images/mia/drawing/2.webp';
 import fridgeMagnets from '~/assets/images/mia/fridge-magnets.jpeg';
-import miaProfile from '~/assets/images/mia/profile.jpeg';
+import miaInIndia from '~/assets/images/mia/mia-in-india.jpg';
+import miaProfile from '~/assets/images/mia/profile-no-bg.png';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Content from '~/components/widgets/Content.astro';
 import Features3 from '~/components/widgets/Features3.astro';
 import Header from '~/components/widgets/Header.astro';
-import Hero from '~/components/widgets/Hero.astro';
+import Hero2 from '~/components/widgets/Hero2.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import { headerData } from '~/navigation';
 
@@ -27,7 +28,7 @@ const miaMailTo = 'mailto:minna.svensson1@gmail.com';
       actions={[
         {
           text: 'Låt oss prata',
-          href: miaMailTo
+          href: miaMailTo,
         },
       ]}
       position="left"
@@ -38,22 +39,31 @@ const miaMailTo = 'mailto:minna.svensson1@gmail.com';
 
   <!-- Hero2 Widget ******************* -->
 
-  <Hero
+  <Hero2
     id="hero"
-    title="Mia Svensson"
     tagline="Freelance Journalist"
     actions={[{ variant: 'primary', text: 'Låt oss prata', href: miaMailTo }]}
+    image={{
+      src: miaProfile,
+      alt: 'Mia Profile',
+    }}
   >
+    <Fragment slot="title"> Mia Svensson </Fragment>
+
     <Fragment slot="subtitle">
-      Jag är en frilansjournalist som brinner för att berätta historier som engagerar och inspirerar. Med min passion
-      för skrivande och min kreativa ådra skapar jag innehåll som berör och sätter avtryck.
+      <span class="hidden sm:inline">
+        Jag är en <span class="font-semibold">frilansjournalist</span> som brinner för att berätta historier som engagerar
+        och inspirerar.
+      </span>
+      Med min passion för skrivande och min kreativa ådra skapar jag innehåll som berör och sätter avtryck.
     </Fragment>
-  </Hero>
+  </Hero2>
 
   <!-- Content Widget **************** -->
 
   <Content
     id="about"
+    isReversed
     columns={3}
     items={[
       {
@@ -82,8 +92,8 @@ const miaMailTo = 'mailto:minna.svensson1@gmail.com';
       },
     ]}
     image={{
-      src: miaProfile,
-      alt: 'Picture of Mia',
+      src: miaInIndia,
+      alt: 'Closeup Picture of Mia',
       loading: 'eager',
     }}
   >
@@ -109,7 +119,7 @@ const miaMailTo = 'mailto:minna.svensson1@gmail.com';
 
   <!-- Steps Widget ****************** -->
 
-  <Steps
+  <!-- <Steps
     id="resume"
     title="Resume"
     items={[
@@ -127,11 +137,11 @@ const miaMailTo = 'mailto:minna.svensson1@gmail.com';
       },
     ]}
     classes={{ container: 'max-w-3xl' }}
-  />
+  /> -->
 
   <!-- Steps Widget ****************** -->
 
-  <Steps
+  <!-- <Steps
     id="resume"
     title="Education"
     items={[
@@ -145,7 +155,7 @@ const miaMailTo = 'mailto:minna.svensson1@gmail.com';
       },
     ]}
     classes={{ container: 'max-w-3xl' }}
-  />
+  /> -->
 
   <!-- Features3 Widget ************** -->
 
@@ -252,7 +262,7 @@ const miaMailTo = 'mailto:minna.svensson1@gmail.com';
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Project 2: <br /><span class="text-2xl">Event poster for art & music festival</span>
+        Project 2: <br /><span class="text-2xl">Fotografi</span>
       </h3>
     </Fragment>
 
