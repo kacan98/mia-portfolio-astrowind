@@ -4,8 +4,9 @@ import ToggleTheme from '~/components/common/ToggleTheme.astro';
 import Button from '~/components/ui/Button.astro';
 
 import type { CallToAction } from '~/types';
-import { getAsset, trimSlash } from '~/utils/permalinks';
+import { getAsset, getHomePermalink, trimSlash } from '~/utils/permalinks';
 import ToggleMenu from '../common/ToggleMenu.astro';
+import Logo from '../Logo.astro';
 
 interface Link {
   text?: string;
@@ -69,9 +70,9 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
     ]}
   >
     <div class:list={[{ 'rtl:mr-0 rtl:ml-auto': position === 'right' }, 'flex justify-between']}>
-      <!-- <a class="flex items-center" href={getHomePermalink()}>
+      <a class="flex items-center" href={getHomePermalink()}>
         <Logo />
-      </a>  -->
+      </a>
       <div class="flex items-center md:hidden">
         <ToggleMenu />
       </div>
