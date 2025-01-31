@@ -1,6 +1,7 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 
+import type { ImageMetadata } from 'astro';
 import drawing1 from '~/assets/images/mia/drawing/2.webp';
 import fridgeMagnets from '~/assets/images/mia/fridge-magnets.jpeg';
 import miaInIndia from '~/assets/images/mia/mia-in-india.jpg';
@@ -9,10 +10,20 @@ import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Content from '~/components/widgets/Content.astro';
 import Features3 from '~/components/widgets/Features3.astro';
+import GaleryButton from '~/components/widgets/GaleryButton.astro';
 import Header from '~/components/widgets/Header.astro';
 import Hero2 from '~/components/widgets/Hero2.astro';
-import Steps from '~/components/widgets/Steps.astro';
 import { headerData } from '~/navigation';
+//https://docs.astro.build/en/recipes/dynamically-importing-images/
+const imagesAalborgFestival = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/assets/images/mia/Foto/Aalborg festival/*.{jpeg,jpg,png,gif}'
+);
+const imagesFotoUtstallning = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/assets/images/mia/Foto/Fotoutställning - Göteborgs Universitet/*.{jpeg,jpg,png,gif}'
+);
+const imagesSwinburne = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/assets/images/mia/Foto/Swinburne Unversitet - Porträtt/*.{jpeg,jpg,png,gif}'
+);
 
 const metadata = {
   title: 'Mia Svensson',
@@ -166,28 +177,28 @@ const miaMailTo = 'mailto:minna.svensson1@gmail.com';
     defaultIcon="tabler:point-filled"
     items={[
       {
-        title: 'Photography',
-        description: 'Erfarenhet av att skapa visuellt tilltalande bilder för olika ändamål.',
+        title: 'Nyfikenhet och kreativitet',
+        description: 'Ständigt nyfiken på att utforska nya idéer och kreativa lösningar.',
       },
       {
-        title: 'Kreativt skrivande',
-        description: 'Förmåga att skapa engagerande och inspirerande texter som berör läsaren.',
+        title: 'Bra intervjuare',
+        description: 'Manga sagder att dem sagder saker som dem har aldrig sagt förut till någon.',
       },
       {
-        title: 'Grafisk design',
-        description: 'Expertis inom skapandet av visuellt tilltalande grafiska element för olika plattformar.',
+        title: 'Fotojournalistik',
+        description: 'Erfarenhet av att berätta historier genom bilder och visuellt innehåll.',
       },
       {
-        title: 'Content creation',
-        description: 'Skapar innehåll som engagerar och inspirerar målgruppen.',
+        title: 'Originalt perspektiv',
+        description: 'Förmåga att se saker från ett unikt och originellt perspektiv.',
       },
       {
-        title: 'Social media management',
-        description: 'Erfarenhet av att skapa och hantera innehåll på sociala medieplattformar.',
+        title: 'Video Production',
+        description: 'Erfarenhet av att skapa engagerande videor för olika plattformar.',
       },
       {
-        title: 'Copywriting',
-        description: 'Förmåga att skapa övertygande och effektiva texter för olika syften.',
+        title: 'Historieberättande',
+        description: 'Passion för att berätta engagerande och inspirerande historier.',
       },
     ]}
   />
@@ -199,33 +210,16 @@ const miaMailTo = 'mailto:minna.svensson1@gmail.com';
     title="Mina senaste projekt"
     subtitle="Jag tycker om att experimentera med olika kreativa stilar och tekniker. Här är några av mina senaste projekt."
     isReversed
-    items={[
-      {
-        title: 'Description:',
-        description:
-          'Developed a comprehensive brand identity for a tech startup, Tech Innovators, specializing in disruptive innovations. The goal was to convey a modern yet approachable image that resonated with both corporate clients and tech enthusiasts.',
-      },
-      {
-        title: 'Role:',
-        description:
-          'Led the entire branding process from concept to execution. Created a dynamic logo that symbolized innovation, selected a vibrant color palette, and I designed corporate stationery, website graphics, and social media assets.',
-      },
-    ]}
     image={{
       src: drawing1,
       alt: 'Tech Design Image',
     }}
-    callToAction={{
-      target: '_blank',
-      text: 'Go to the project',
-      icon: 'tabler:chevron-right',
-      href: '#',
-    }}
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Project 1: <br /><span class="text-2xl">Brand identity for tech innovators</span>
+        Project 1: <br /><span class="text-2xl">Aalborg festival</span>
       </h3>
+      <GaleryButton imagesObj={imagesAalborgFestival} />
     </Fragment>
 
     <Fragment slot="bg">
@@ -238,32 +232,16 @@ const miaMailTo = 'mailto:minna.svensson1@gmail.com';
   <Content
     isReversed
     isAfterContent={true}
-    items={[
-      {
-        title: 'Description:',
-        description:
-          'Designed a captivating event poster for an art and music festival, "ArtWave Fusion," aiming to showcase the synergy between visual art and music genres.',
-      },
-      {
-        title: 'Role:',
-        description: `Translated the festival's creative theme into a visually striking poster. Used bold typography, vibrant colors, and abstract elements to depict the fusion of art and music. Ensured the design captured the festival's vibrant atmosphere.`,
-      },
-    ]}
     image={{
       src: 'https://images.unsplash.com/photo-1619983081563-430f63602796?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
       alt: 'Art and Music Poster Image',
     }}
-    callToAction={{
-      target: '_blank',
-      text: 'Go to the project',
-      icon: 'tabler:chevron-right',
-      href: miaMailTo,
-    }}
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Project 2: <br /><span class="text-2xl">Fotografi</span>
+        Project 2: <br /><span class="text-2xl">Fotoutställning - Göteborgs Universitet</span>
       </h3>
+      <GaleryButton imagesObj={imagesFotoUtstallning} />
     </Fragment>
 
     <Fragment slot="bg">
@@ -276,31 +254,16 @@ const miaMailTo = 'mailto:minna.svensson1@gmail.com';
   <Content
     isReversed
     isAfterContent={true}
-    items={[
-      {
-        title: 'Description:',
-        description: `Redesigned the e-commerce website for an eco-conscious fashion brand, GreenVogue. The objective was to align the brand's online presence with its sustainable ethos and improve user experience.`,
-      },
-      {
-        title: 'Role:',
-        description: `Conducted a thorough analysis of the brand's values and customer base to inform the design direction. Created a visually appealing interface with intuitive navigation, highlighting sustainable materials, and integrating a user-friendly shopping experience.`,
-      },
-    ]}
     image={{
       src: fridgeMagnets,
       alt: 'Frige Magnets by Mia',
     }}
-    callToAction={{
-      target: '_blank',
-      text: 'Go to the project',
-      icon: 'tabler:chevron-right',
-      href: '#',
-    }}
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Project 3: <br /><span class="text-2xl">E-commerce website redesign for fashion brand</span>
+        Project 3: <br /><span class="text-2xl">Swinburne Unversitet - Porträtt</span>
       </h3>
+      <GaleryButton imagesObj={imagesSwinburne} />
     </Fragment>
 
     <Fragment slot="bg">
