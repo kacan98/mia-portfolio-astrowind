@@ -32,6 +32,7 @@
     "astro-icon": "^1.1.5",
     "limax": "4.1.0",
     "lodash.merge": "^4.6.2",
+    "photoswipe": "^5.4.4",
     "unpic": "^3.22.0"
   },
   "devDependencies": {
@@ -47,6 +48,7 @@
     "@types/js-yaml": "^4.0.9",
     "@types/lodash.merge": "^4.6.9",
     "@types/mdx": "^2.0.13",
+    "@types/photoswipe": "^4.1.6",
     "@typescript-eslint/eslint-plugin": "^8.21.0",
     "@typescript-eslint/parser": "^8.21.0",
     "astro-compress": "2.3.6",

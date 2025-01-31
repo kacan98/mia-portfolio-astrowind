@@ -14,7 +14,7 @@ import GaleryButton from '~/components/widgets/GaleryButton.astro';
 import Header from '~/components/widgets/Header.astro';
 import Hero2 from '~/components/widgets/Hero2.astro';
 import { headerData } from '~/navigation';
-//https://docs.astro.build/en/recipes/dynamically-importing-images/
+
 const imagesAalborgFestival = import.meta.glob<{ default: ImageMetadata }>(
   '/src/assets/images/mia/Foto/Aalborg festival/*.{jpeg,jpg,png,gif}'
 );
@@ -128,6 +128,62 @@ const miaMailTo = 'mailto:minna.svensson1@gmail.com';
     </Fragment>
   </Content>
 
+  <!-- Content Widget **************** -->
+
+  <Content
+    id="porfolio"
+    title="Mina senaste projekt"
+    subtitle="Jag tycker om att experimentera med olika kreativa stilar och tekniker. Här är några av mina senaste projekt."
+    isReversed
+    image={{
+      src: drawing1,
+      alt: 'Tech Design Image',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        <span class="text-2xl">Aalborg festival</span>
+      </h3>
+      <GaleryButton imagesObj={imagesAalborgFestival} />
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isReversed
+    isAfterContent={true}
+    image={{
+      src: 'https://images.unsplash.com/photo-1619983081563-430f63602796?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+      alt: 'Art and Music Poster Image',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        <span class="text-2xl">Fotoutställning - Göteborgs Universitet</span>
+      </h3>
+      <GaleryButton imagesObj={imagesFotoUtstallning} />
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isReversed
+    isAfterContent={true}
+    image={{
+      src: fridgeMagnets,
+      alt: 'Frige Magnets by Mia',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        <span class="text-2xl">Swinburne Unversitet - Porträtt</span>
+      </h3>
+      <GaleryButton imagesObj={imagesSwinburne} />
+    </Fragment>
+  </Content>
+
   <!-- Steps Widget ****************** -->
 
   <!-- <Steps
@@ -201,75 +257,11 @@ const miaMailTo = 'mailto:minna.svensson1@gmail.com';
         description: 'Passion för att berätta engagerande och inspirerande historier.',
       },
     ]}
-  />
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    id="porfolio"
-    title="Mina senaste projekt"
-    subtitle="Jag tycker om att experimentera med olika kreativa stilar och tekniker. Här är några av mina senaste projekt."
-    isReversed
-    image={{
-      src: drawing1,
-      alt: 'Tech Design Image',
-    }}
   >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Project 1: <br /><span class="text-2xl">Aalborg festival</span>
-      </h3>
-      <GaleryButton imagesObj={imagesAalborgFestival} />
-    </Fragment>
-
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isReversed
-    isAfterContent={true}
-    image={{
-      src: 'https://images.unsplash.com/photo-1619983081563-430f63602796?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-      alt: 'Art and Music Poster Image',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Project 2: <br /><span class="text-2xl">Fotoutställning - Göteborgs Universitet</span>
-      </h3>
-      <GaleryButton imagesObj={imagesFotoUtstallning} />
-    </Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isReversed
-    isAfterContent={true}
-    image={{
-      src: fridgeMagnets,
-      alt: 'Frige Magnets by Mia',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Project 3: <br /><span class="text-2xl">Swinburne Unversitet - Porträtt</span>
-      </h3>
-      <GaleryButton imagesObj={imagesSwinburne} />
-    </Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
+  </Features3>
 
   <!-- CallToAction Widget *********** -->
 

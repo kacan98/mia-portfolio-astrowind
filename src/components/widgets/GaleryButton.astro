@@ -1,6 +1,5 @@
 ---
 import type { ImageMetadata } from 'astro';
-import { Image } from 'astro:assets';
 import Button from '../ui/Button.astro';
 
 export interface Props {
@@ -13,81 +12,38 @@ export interface Props {
 }
 
 const { imagesObj } = Astro.props;
-const imagesArray = await Promise.all(Object.values(imagesObj).map((image) => image().then((res) => res.default.src)));
-
-if (imagesArray.length === 0) throw new Error('No images provided');
+const imagesArray = await Promise.all(Object.values(imagesObj).map((image) => image()));
 ---
 
-<style>
-  dialog::backdrop {
-    background-color: ☐ hsl(0, 100%, 50%, 0.5);
-  }
-
-  /* The dialog has to shape around the image that is displayed in it. It has to have a decent margin around the image
-  so that the background is clickable */
-  dialog {
-    max-height: 90vh;
-  }
-
-  img {
-    object-fit: contain; /* Ensures the image is contained within the dialog without being squashed or cut */
-  }
-</style>
-<galery-button data-images={JSON.stringify(imagesArray)}>
-  <div class="mb-8 text-primary" onclick="document.getElementById('image-dialog').showModal()">
-    <Button variant="link" text="Open Gallery" icon="tabler:chevron-right" , />
-  </div>
-
-  <!-- make the dialog have more margin in desctop view with tailwind -->
-  <dialog id="image-dialog" class="m-20">
-    <div class="dialog-content">
-      <span class="arrow left">&#9664;</span>
-      <img id="gallery-image" src={imagesArray[0]} alt="Gallery Image" />
-      <span class="arrow right">&#9654;</span>
+{
+  imagesArray.length && (
+    <div id="my-gallery">
+      {imagesArray.map((image, index) => (
+        <a
+          href={image.default.src}
+          data-pswp-src={image.default.src}
+          data-pswp-width={image.default.width}
+          data-pswp-height={image.default.height}
+        >
+          {index === 0 && (
+            <div class="mb-8 text-primary">
+              <Button variant="link" text="Open Gallery" icon="tabler:chevron-right" />
+            </div>
+          )}
+        </a>
+      ))}
     </div>
-  </dialog>
-</galery-button>
+  )
+}
 
 <script>
-  class GaleryButton extends HTMLElement {
-    connectedCallback() {
-      const images = this.dataset.images ? JSON.parse(this.dataset.images) : [];
-      const leftArrow = this.querySelector('.arrow.left');
-      const rightArrow = this.querySelector('.arrow.right');
-      const imgElement: HTMLImageElement | null = this.querySelector('#gallery-image');
-      const modal: HTMLDialogElement | null = document.querySelector('#image-dialog');
+  import PhotoSwipeLightbox from 'photoswipe/lightbox';
+  import 'photoswipe/style.css';
 
-      if (!imgElement || !leftArrow || !rightArrow || !modal) throw new Error('Missing elements');
-
-      let currentIndex = 0;
-      leftArrow.addEventListener('click', () => {
-        currentIndex = (currentIndex - 1 + images.length) % images.length;
-        updateImage();
-      });
-
-      rightArrow.addEventListener('click', () => {
-        currentIndex = (currentIndex + 1) % images.length;
-        updateImage();
-      });
-
-      function updateImage() {
-        if (!imgElement || !imgElement.src) throw new Error('Missing image element');
-        imgElement.src = images[currentIndex % images.length];
-      }
-
-      modal.addEventListener('click', (e) => {
-        const dialogDimensions = modal.getBoundingClientRect();
-        if (
-          e.clientX < dialogDimensions.left ||
-          e.clientX > dialogDimensions.right ||
-          e.clientY < dialogDimensions.top ||
-          e.clientY > dialogDimensions.bottom
-        ) {
-          modal.close();
-        }
-      });
-    }
-  }
-
-  customElements.define('galery-button', GaleryButton);
+  const lightbox = new PhotoSwipeLightbox({
+    gallery: '#my-gallery',
+    children: 'a',
+    pswpModule: () => import('photoswipe'),
+  });
+  lightbox.init();
 </script>
