@@ -27,13 +27,13 @@ const imagesArray = await Promise.all(Object.values(imagesObj).map((image) => im
           data-pswp-src={image.default.src}
           data-pswp-width={image.default.width}
           data-pswp-height={image.default.height}
-          class={`${index === 0 ? '' : ''}`}
+          class={'text-primary'} 
         >
           {index === 0 && 'Open Gallery'}
         </a>
       ))}
     </span>
-    <Icon name="tabler:chevron-right" class="w-6 h-6 inline" />
+    <Icon name="tabler:chevron-right" class="w-6 h-6 inline text-primary" />
   )
 }
 
