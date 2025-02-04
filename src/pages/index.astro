@@ -14,6 +14,7 @@ import GaleryButton from '~/components/widgets/GaleryButton.astro';
 import Header from '~/components/widgets/Header.astro';
 import Hero2 from '~/components/widgets/Hero2.astro';
 import { headerData } from '~/navigation';
+import Logos from '~/components/widgets/Logos.astro';
 
 const imagesAalborgFestival = import.meta.glob<{ default: ImageMetadata }>(
   '/src/assets/images/mia/Foto/Aalborg festival/*.{jpeg,jpg,png,gif}'
@@ -72,6 +73,13 @@ const miaMailTo = 'mailto:minna.svensson1@gmail.com';
 
   <!-- Content Widget **************** -->
 
+  <Logos>
+    <Fragment slot="title"> Uppdragsgivare: </Fragment>
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Logos>
+
   <Content
     id="about"
     isReversed
@@ -122,10 +130,6 @@ const miaMailTo = 'mailto:minna.svensson1@gmail.com';
         intresserad av att samarbeta eller anlita mig för ett uppdrag, tveka inte att kontakta mig.
       </p>
     </Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
   </Content>
 
   <!-- Content Widget **************** -->
@@ -146,6 +150,9 @@ const miaMailTo = 'mailto:minna.svensson1@gmail.com';
       </h3>
       <GaleryButton imagesObj={imagesAalborgFestival} />
     </Fragment>
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
   </Content>
 
   <!-- Content Widget **************** -->
@@ -164,6 +171,9 @@ const miaMailTo = 'mailto:minna.svensson1@gmail.com';
       </h3>
       <GaleryButton imagesObj={imagesFotoUtstallning} />
     </Fragment>
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
   </Content>
 
   <!-- Content Widget **************** -->
@@ -181,6 +191,9 @@ const miaMailTo = 'mailto:minna.svensson1@gmail.com';
         <span class="text-2xl">Swinburne Unversitet - Porträtt</span>
       </h3>
       <GaleryButton imagesObj={imagesSwinburne} />
+    </Fragment>
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
   </Content>
 
@@ -257,11 +270,7 @@ const miaMailTo = 'mailto:minna.svensson1@gmail.com';
         description: 'Passion för att berätta engagerande och inspirerande historier.',
       },
     ]}
-  >
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Features3>
+  />
 
   <!-- CallToAction Widget *********** -->
 
@@ -275,7 +284,11 @@ const miaMailTo = 'mailto:minna.svensson1@gmail.com';
         href: '/',
       },
     ]}
-  />
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </CallToAction>
 
   <!-- BlogLatestPost Widget **************** -->
 
@@ -284,8 +297,8 @@ const miaMailTo = 'mailto:minna.svensson1@gmail.com';
     title="Senaste inläggen"
     information={`Här hittar du mina senaste inlägg. Klicka på länken nedan för att läsa fler.`}
   >
-    <Fragment slot="bg">
+    <!-- <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
+    </Fragment> -->
   </BlogLatestPosts>
 </Layout>

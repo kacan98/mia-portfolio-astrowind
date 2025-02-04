@@ -1,0 +1,78 @@
+---
+import DynamicImage from './DynamicImage.astro';
+
+interface Props {
+  bg?: string;
+  id?: string;
+  title?: string;
+  subtitle?: string;
+}
+
+const {
+  bg = await Astro.slots.render('bg'),
+  id,
+  title = await Astro.slots.render('title'),
+  subtitle = await Astro.slots.render('subtitle'),
+} = Astro.props as Props;
+---
+
+<section class="relative pt-10 not-prose" {...id ? { id } : {}}>
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+    <slot name="bg">
+      {bg ? <Fragment set:html={bg} /> : null}
+    </slot>
+  </div>
+  <div class="relative flex flex-col items-center max-w-7xl mx-auto px-4 sm:px-6">
+    {
+      title && (
+        <h3
+          class="text-5xl md:text-4xl font-bold leading-tighter tracking-tighter font-heading dark:text-gray-200 intersect-once motion-safe:md:intersect:animate-fade motion-safe:md:opacity-0 intersect-quarter"
+          set:html={title}
+        />
+      )
+    }
+    <div class="max-w-3xl mx-auto lg:max-w-none">
+      {
+        subtitle && (
+          <p
+            class="text-xl text-muted mb-6 dark:text-slate-300 intersect-once motion-safe:md:intersect:animate-fade motion-safe:md:opacity-0 intersect-quarter"
+            set:html={subtitle}
+          />
+        )
+      }
+    </div>
+  </div>
+  <div class="relative image-gallery display:flex flex-wrap gap:10 justify-center m-5 z-10">
+    <a href="https://www.gp.se/eeed57ca-82d4-43fb-96d6-1db123b4004d" target="_blank">
+      <DynamicImage imageName="gp.png" />
+    </a>
+    <a href="https://www.friskfri.se/" target="_blank">
+      <DynamicImage imageName="friskOchFri.png" />
+    </a>
+    <DynamicImage imageName="göteborgsStad.png" />
+    <a href="https://www.friskfri.se/" target="_blank">
+      <DynamicImage imageName="k103.png" />
+    </a>
+    <a href="https://ungmedia.se/" target="_blank">
+      <DynamicImage imageName="ungMediaVast.png" />
+    </a>
+  </div>
+</section>
+
+<style>
+  .image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .image-gallery img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
