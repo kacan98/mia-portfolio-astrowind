@@ -45,7 +45,9 @@ const imagesArray = await Promise.all(Object.values(imagesObj).map((image) => im
     gallery: '#my-gallery',
     children: 'a',
     pswpModule: () => import('photoswipe'),
-    loop: false
+    loop: false,
+    preloadFirstSlide: true
+    
   });
   lightbox.init();
 </script>

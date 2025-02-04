@@ -18,7 +18,7 @@ metadata:
   openGraph:
     site_name: Mia Svensson
     images:
-      - url: '~/assets/images/mia/mia-profile.jpeg'
+      - url: '~/assets/images/mia/mia-no-bg-tuned.png'
         width: 1200
         height: 628
     type: website
