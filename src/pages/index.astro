@@ -2,8 +2,10 @@
 import Layout from '~/layouts/PageLayout.astro';
 
 import type { ImageMetadata } from 'astro';
-import drawing1 from '~/assets/images/mia/drawing/2.webp';
-import fridgeMagnets from '~/assets/images/mia/fridge-magnets.jpeg';
+import karnevalPhoto from '~/assets/images/mia/foto/Aalborg festival/Karneval_-15.jpg';
+import fotoreportageFrilagret from '~/assets/images/mia/foto/Fotoreportage - Frilagret/Mia_Svensson_Kortreportage_02jpg.jpg';
+import introFotoUtstallning from '~/assets/images/mia/Foto/Fotoutställning - Göteborgs Universitet/baby on motobike.jpg';
+import introSwinburne from '~/assets/images/mia/Foto/Swinburne Unversitet - Porträtt/103836907_Svensson_Mia_PhotoAss.Photo 8_MS copy.jpg';
 import miaInIndia from '~/assets/images/mia/mia-in-india.jpg';
 import miaProfile from '~/assets/images/mia/profile-no-bg.png';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
@@ -24,6 +26,9 @@ const imagesFotoUtstallning = import.meta.glob<{ default: ImageMetadata }>(
 );
 const imagesSwinburne = import.meta.glob<{ default: ImageMetadata }>(
   '/src/assets/images/mia/Foto/Swinburne Unversitet - Porträtt/*.{jpeg,jpg,png,gif}'
+);
+const imagesFrilagret = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/assets/images/mia/Foto/Fotoreportage - Frilagret/*.{jpeg,jpg,png,gif}'
 );
 
 const metadata = {
@@ -136,17 +141,17 @@ const miaMailTo = 'mailto:minna.svensson1@gmail.com';
 
   <Content
     id="porfolio"
-    title="Mina senaste projekt"
-    subtitle="Jag tycker om att experimentera med olika kreativa stilar och tekniker. Här är några av mina senaste projekt."
+    title="Mina senaste fotoprojekt"
+    subtitle="Jag tycker om att berätta historier genom bilder och visuellt innehåll. Utforska mina senaste fotoprojekt nedan."
     isReversed
     image={{
-      src: drawing1,
-      alt: 'Tech Design Image',
+      src: karnevalPhoto,
+      alt: 'Photo from Aalborg Karneval',
     }}
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        <span class="text-2xl">Aalborg festival</span>
+        <span class="text-2xl">Aalborg carneval</span>
       </h3>
       <GaleryButton imagesObj={imagesAalborgFestival} />
     </Fragment>
@@ -161,8 +166,8 @@ const miaMailTo = 'mailto:minna.svensson1@gmail.com';
     isReversed
     isAfterContent={true}
     image={{
-      src: 'https://images.unsplash.com/photo-1619983081563-430f63602796?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-      alt: 'Art and Music Poster Image',
+      src: introFotoUtstallning,
+      alt: 'Foto Utstallning',
     }}
   >
     <Fragment slot="content">
@@ -182,8 +187,27 @@ const miaMailTo = 'mailto:minna.svensson1@gmail.com';
     isReversed
     isAfterContent={true}
     image={{
-      src: fridgeMagnets,
-      alt: 'Frige Magnets by Mia',
+      src: fotoreportageFrilagret,
+      alt: 'Fotoreportage Frilagret',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        <span class="text-2xl">Fotoreportage Frilagret</span>
+      </h3>
+      <GaleryButton imagesObj={imagesFrilagret} />
+    </Fragment>
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <Content
+    isReversed
+    isAfterContent={true}
+    image={{
+      src: introSwinburne,
+      alt: 'Swinburne Unversitet - Porträtt',
     }}
   >
     <Fragment slot="content">

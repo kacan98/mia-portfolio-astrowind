@@ -1,6 +1,6 @@
 ---
 import type { ImageMetadata } from 'astro';
-import Button from '../ui/Button.astro';
+import { Icon } from 'astro-icon/components';
 
 export interface Props {
   imagesObj: Record<
@@ -17,22 +17,23 @@ const imagesArray = await Promise.all(Object.values(imagesObj).map((image) => im
 
 {
   imagesArray.length && (
-    <div id="my-gallery">
+    <span id="my-gallery">
+                {/* this is really really stupid but there cannot be any elements in there or it will make them a fucking item in the modal.
+           How stupid is this? A lot. But it works when it's just text. So fuck you package */}
+
       {imagesArray.map((image, index) => (
         <a
           href={image.default.src}
           data-pswp-src={image.default.src}
           data-pswp-width={image.default.width}
           data-pswp-height={image.default.height}
+          class={`${index === 0 ? '' : ''}`}
         >
-          {index === 0 && (
-            <div class="mb-8 text-primary">
-              <Button variant="link" text="Open Gallery" icon="tabler:chevron-right" />
-            </div>
-          )}
+          {index === 0 && 'Open Gallery'}
         </a>
       ))}
-    </div>
+    </span>
+    <Icon name="tabler:chevron-right" class="w-6 h-6 inline" />
   )
 }
 
@@ -44,6 +45,7 @@ const imagesArray = await Promise.all(Object.values(imagesObj).map((image) => im
     gallery: '#my-gallery',
     children: 'a',
     pswpModule: () => import('photoswipe'),
+    loop: false
   });
   lightbox.init();
 </script>
