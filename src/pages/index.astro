@@ -6,6 +6,7 @@ import karnevalPhoto from '~/assets/images/mia/Foto/Aalborg festival/Karneval15.
 import fotoreportageFrilagret from '~/assets/images/mia/Foto/Fotoreportage - Frilagret/Mia_Svensson_Kortreportage_02jpg.jpg';
 import introFotoUtstallning from '~/assets/images/mia/Foto/Fotoutställning - Göteborgs Universitet/baby on motobike.jpg';
 import introSwinburne from '~/assets/images/mia/Foto/Swinburne Unversitet - Porträtt/103836907_Svensson_Mia_PhotoAss.Photo 8_MS copy.jpg';
+import introRomadagen from '~/assets/images/mia/Foto/Romadagen/IMG_2159 copy.jpg';
 import miaInIndia from '~/assets/images/mia/mia-in-india.jpg';
 import miaProfile from '~/assets/images/mia/profile-no-bg.png';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
@@ -30,6 +31,9 @@ const imagesSwinburne = import.meta.glob<{ default: ImageMetadata }>(
 );
 const imagesFrilagret = import.meta.glob<{ default: ImageMetadata }>(
   '/src/assets/images/mia/Foto/Fotoreportage - Frilagret/*.{jpeg,jpg,png,gif}'
+);
+const imagesRomadagen = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/assets/images/mia/Foto/Romadagen/*.{jpeg,jpg,png,gif}'
 );
 
 const metadata = {
@@ -130,27 +134,7 @@ const metadata = {
     title="Mina senaste fotoprojekt"
     subtitle="Jag tycker om att berätta historier genom bilder och visuellt innehåll. Utforska mina senaste fotoprojekt nedan."
     isReversed
-    image={{
-      src: karnevalPhoto,
-      alt: 'Photo from Aalborg Karneval',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        <span class="text-2xl">Aalborg carneval</span>
-      </h3>
-      <GaleryButton imagesObj={imagesAalborgFestival} />
-    </Fragment>
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isReversed
-    isAfterContent={true}
+    isAfterContent={false}
     image={{
       src: introFotoUtstallning,
       alt: 'Foto Utstallning',
@@ -158,7 +142,7 @@ const metadata = {
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        <span class="text-2xl">Fotoutställning - Göteborgs Universitet</span>
+        <span class="text-2xl">Livet i Indien</span>
       </h3>
       <GaleryButton imagesObj={imagesFotoUtstallning} />
     </Fragment>
@@ -171,7 +155,7 @@ const metadata = {
 
   <Content
     isReversed
-    isAfterContent={true}
+    isAfterContent
     image={{
       src: fotoreportageFrilagret,
       alt: 'Fotoreportage Frilagret',
@@ -190,7 +174,7 @@ const metadata = {
 
   <Content
     isReversed
-    isAfterContent={true}
+    isAfterContent
     image={{
       src: introSwinburne,
       alt: 'Swinburne Unversitet - Porträtt',
@@ -201,6 +185,44 @@ const metadata = {
         <span class="text-2xl">Swinburne Unversitet - Porträtt</span>
       </h3>
       <GaleryButton imagesObj={imagesSwinburne} />
+    </Fragment>
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <Content
+    isReversed
+    isAfterContent
+    image={{
+      src: karnevalPhoto,
+      alt: 'Photo from Aalborg Karneval',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        <span class="text-2xl">Aalborg carneval</span>
+      </h3>
+      <GaleryButton imagesObj={imagesAalborgFestival} />
+    </Fragment>
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <Content
+    isReversed
+    isAfterContent
+    image={{
+      src: introRomadagen,
+      alt: 'Foto Romadagen',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        <span class="text-2xl">Romadagen</span>
+      </h3>
+      <GaleryButton imagesObj={imagesRomadagen} />
     </Fragment>
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
