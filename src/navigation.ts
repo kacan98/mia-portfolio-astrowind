@@ -6,7 +6,7 @@ export const headerData = {
     { text: 'Om mig', href: '/#about' },
     // { text: 'Resume', href: '/#resume' },
     { text: 'Foto', href: '/#porfolio' },
-    { text: 'Inlägg', href: '/#inlägg' },
+    { text: 'Text', href: '/#inlägg' },
   ],
 };
 
@@ -96,10 +96,10 @@ export const originalHeader = {
       ],
     },
     {
-      text: 'inlägg',
+      text: 'Blog',
       links: [
         {
-          text: 'inlägg List',
+          text: 'Blog L',
           href: getBlogPermalink(),
         },
         {
