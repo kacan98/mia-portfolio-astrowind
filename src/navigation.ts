@@ -1,12 +1,14 @@
-import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
+import { getAsset, getBlogPermalink, getPermalink } from './utils/permalinks';
+
+export const miaMailTo = 'mailto:minna.svensson1@gmail.com';
 
 export const headerData = {
   links: [
-    { text: 'Hjem', href: '' },
-    { text: 'Om mig', href: '/#about' },
+    // { text: 'Hjem', href: '' },
     // { text: 'Resume', href: '/#resume' },
     { text: 'Foto', href: '/#porfolio' },
     { text: 'Text', href: '/#inlägg' },
+    { text: 'Om mig', href: '/#about' },
   ],
 };
 
@@ -129,10 +131,7 @@ export const originalHeader = {
 };
 export const footerData = {
   links: [],
-  secondaryLinks: [
-    { text: 'Terms', href: getPermalink('/terms') },
-    { text: 'Privacy Policy', href: getPermalink('/privacy') },
-  ],
+  secondaryLinks: [],
   socialLinks: [
     { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: 'https://www.instagram.com/detonormalanormala/' },
     {
@@ -140,6 +139,7 @@ export const footerData = {
       icon: 'tabler:brand-spotify',
       href: 'https://open.spotify.com/show/4vLmISJW3dYqLc66bwXbTM',
     },
+    { ariaLabel: 'mail', icon: 'tabler:mail', href: miaMailTo },
   ],
   footNote: `
     Made by <a class="text-blue-600 underline dark:text-muted" href="https://www.linkedin.com/in/kcancara/" target="_blank"> Karel Čančara</a> · All rights reserved.

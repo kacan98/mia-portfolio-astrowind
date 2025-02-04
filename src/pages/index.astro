@@ -17,6 +17,7 @@ import Header from '~/components/widgets/Header.astro';
 import Hero2 from '~/components/widgets/Hero2.astro';
 import { headerData } from '~/navigation';
 import Logos from '~/components/widgets/Logos.astro';
+import { miaMailTo } from '~/navigation';
 
 const imagesAalborgFestival = import.meta.glob<{ default: ImageMetadata }>(
   '/src/assets/images/mia/Foto/Aalborg festival/*.{jpeg,jpg,png,gif}'
@@ -34,7 +35,6 @@ const imagesFrilagret = import.meta.glob<{ default: ImageMetadata }>(
 const metadata = {
   title: 'Mia Svensson',
 };
-const miaMailTo = 'mailto:minna.svensson1@gmail.com';
 ---
 
 <Layout metadata={metadata}>
@@ -85,57 +85,44 @@ const miaMailTo = 'mailto:minna.svensson1@gmail.com';
     </Fragment>
   </Logos>
 
-  <Content
-    id="about"
-    isReversed
+  <!-- Features3 Widget ************** -->
+
+  <Features3
+    title="Mina expertisområden"
+    subtitle="Utforska mina expertisområden och se hur jag kan bidra till ditt projekt."
     columns={3}
+    defaultIcon="tabler:point-filled"
     items={[
       {
-        icon: 'tabler:brand-spotify',
-        callToAction: {
-          target: '_blank',
-          text: 'Spotify',
-          href: 'https://open.spotify.com/show/4vLmISJW3dYqLc66bwXbTM',
-        },
+        title: 'Nyfikenhet och kreativitet',
+        description: 'Ständigt nyfiken på att utforska nya idéer och kreativa lösningar.',
       },
       {
-        icon: 'tabler:brand-linkedin',
-        callToAction: {
-          target: '_blank',
-          text: 'LinkedIn',
-          href: 'https://www.linkedin.com/in/minna-svensson-24176b296/?originalSubdomain=se',
-        },
+        title: 'Bra intervjuare',
+        description: 'Manga sagder att dem sagder saker som dem har aldrig sagt förut till någon.',
       },
       {
-        icon: 'tabler:mail',
-        callToAction: {
-          target: '_blank',
-          text: 'Email',
-          href: miaMailTo,
-        },
+        title: 'Fotojournalistik',
+        description: 'Erfarenhet av att berätta historier genom bilder och visuellt innehåll.',
+      },
+      {
+        title: 'Originalt perspektiv',
+        description: 'Förmåga att se saker från ett unikt och originellt perspektiv.',
+      },
+      {
+        title: 'Video Production',
+        description: 'Erfarenhet av att skapa engagerande videor för olika plattformar.',
+      },
+      {
+        title: 'Historieberättande',
+        description: 'Passion för att berätta engagerande och inspirerande historier.',
       },
     ]}
-    image={{
-      src: miaInIndia,
-      alt: 'Closeup Picture of Mia',
-      loading: 'eager',
-    }}
   >
-    <Fragment slot="content">
-      <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Om mig</h2>
-      <p>Jag är en frilansjournalist med en passion för att berätta engagerande och inspirerande historier. Med min</p>
-      <br />
-      <p>
-        Det är min övertygelse att varje historia har potential att beröra och förändra, och jag strävar efter att skapa
-        innehåll som sätter avtryck och väcker känslor.
-      </p>
-      <br />
-      <p>
-        Kolla gärna in mina senaste artiklar på min blogg och låt dig inspireras av mina berättelser. Om du är
-        intresserad av att samarbeta eller anlita mig för ett uppdrag, tveka inte att kontakta mig.
-      </p>
-    </Fragment>
-  </Content>
+    <!-- <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment> -->
+  </Features3>
 
   <!-- Content Widget **************** -->
 
@@ -261,41 +248,6 @@ const miaMailTo = 'mailto:minna.svensson1@gmail.com';
     classes={{ container: 'max-w-3xl' }}
   /> -->
 
-  <!-- Features3 Widget ************** -->
-
-  <Features3
-    title="Mina expertisområden"
-    subtitle="Utforska mina expertisområden och se hur jag kan bidra till ditt projekt."
-    columns={3}
-    defaultIcon="tabler:point-filled"
-    items={[
-      {
-        title: 'Nyfikenhet och kreativitet',
-        description: 'Ständigt nyfiken på att utforska nya idéer och kreativa lösningar.',
-      },
-      {
-        title: 'Bra intervjuare',
-        description: 'Manga sagder att dem sagder saker som dem har aldrig sagt förut till någon.',
-      },
-      {
-        title: 'Fotojournalistik',
-        description: 'Erfarenhet av att berätta historier genom bilder och visuellt innehåll.',
-      },
-      {
-        title: 'Originalt perspektiv',
-        description: 'Förmåga att se saker från ett unikt och originellt perspektiv.',
-      },
-      {
-        title: 'Video Production',
-        description: 'Erfarenhet av att skapa engagerande videor för olika plattformar.',
-      },
-      {
-        title: 'Historieberättande',
-        description: 'Passion för att berätta engagerande och inspirerande historier.',
-      },
-    ]}
-  />
-
   <!-- CallToAction Widget *********** -->
 
   <CallToAction
@@ -304,14 +256,15 @@ const miaMailTo = 'mailto:minna.svensson1@gmail.com';
     actions={[
       {
         variant: 'primary',
-        text: 'Lad os prata',
+        text: 'Låt oss prata',
         href: '/',
+        icon: 'tabler:coffee',
       },
     ]}
   >
-    <Fragment slot="bg">
+    <!-- <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
+    </Fragment> -->
   </CallToAction>
 
   <!-- BlogLatestPost Widget **************** -->
@@ -321,8 +274,61 @@ const miaMailTo = 'mailto:minna.svensson1@gmail.com';
     title="Senaste inläggen"
     information={`Här hittar du mina senaste inlägg. Klicka på länken nedan för att läsa fler.`}
   >
-    <!-- <Fragment slot="bg">
+    <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment> -->
+    </Fragment>
   </BlogLatestPosts>
+
+  <Content
+    id="about"
+    columns={3}
+    items={[
+      {
+        icon: 'tabler:brand-spotify',
+        callToAction: {
+          target: '_blank',
+          text: 'Spotify',
+          href: 'https://open.spotify.com/show/4vLmISJW3dYqLc66bwXbTM',
+        },
+      },
+      {
+        icon: 'tabler:brand-linkedin',
+        callToAction: {
+          target: '_blank',
+          text: 'LinkedIn',
+          href: 'https://www.linkedin.com/in/minna-svensson-24176b296/?originalSubdomain=se',
+        },
+      },
+      {
+        icon: 'tabler:mail',
+        callToAction: {
+          target: '_blank',
+          text: 'Email',
+          href: miaMailTo,
+        },
+      },
+    ]}
+    image={{
+      src: miaInIndia,
+      alt: 'Closeup Picture of Mia',
+      loading: 'eager',
+    }}
+  >
+    <Fragment slot="content">
+      <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Om mig</h2>
+      <p>
+        Jag ser världen lite annorlunda – och jag älskar att få andra att göra det också. Som journalist, poddmakare och
+        kreativ själ letar jag alltid efter de berättelser som ligger precis under ytan, de detaljer ingen lagt märke
+        till men som förändrar allt när man väl ser dem.
+      </p>
+      <br />
+      <p>
+        Jag gillar att prata med människor, lyssna på deras tankar och fånga det där speciella som de själva kanske inte
+        ens insett. Sedan berättar jag deras historier på mitt sätt – levande, nyfiket och med en vinkel som känns både
+        självklar och helt ny på samma gång.
+      </p>
+      <br />
+      <p>Har du en historia att dela eller en idé att utforska? Hör av dig – jag är alltid redo för ett samtal!</p>
+    </Fragment>
+  </Content>
 </Layout>
