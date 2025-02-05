@@ -10,7 +10,7 @@ site:
 metadata:
   title:
     default: Mia Svensson
-    template: '%s | Portfolio'
+    template: '%s | Freelance Journalist, Podcaster and Human'
   description: "\U0001F4DA Young Journalist, Podcaster and Human"
   robots:
     index: true
@@ -18,7 +18,7 @@ metadata:
   openGraph:
     site_name: Mia Svensson
     images:
-      - url: '~/assets/images/mia/mia-no-bg-tuned.png'
+      - url: '~/assets/images/mia/mia-in-india.jpg'
         width: 1200
         height: 628
     type: website

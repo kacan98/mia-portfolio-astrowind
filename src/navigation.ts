@@ -1,6 +1,13 @@
 import { getAsset, getBlogPermalink, getPermalink } from './utils/permalinks';
 
-export const miaMailTo = 'mailto:minna.svensson1@gmail.com';
+const subject = 'Skribentförfrågan';
+const message = `Hej Mia,
+
+Jag såg din webbplats och är intresserad av att diskutera en skrividé med dig. Vill du ta en kaffe och prata mer om det?
+
+Hälsningar,`;
+
+export const miaMailTo = `mailto:miaasvensson@gmail.com?body=${encodeURIComponent(message)}&subject=${encodeURIComponent(subject)}`;
 
 export const headerData = {
   links: [
@@ -139,7 +146,7 @@ export const footerData = {
       icon: 'tabler:brand-spotify',
       href: 'https://open.spotify.com/show/4vLmISJW3dYqLc66bwXbTM',
     },
-    { ariaLabel: 'mail', icon: 'tabler:mail', href: miaMailTo },
+    { ariaLabel: 'mail', icon: 'tabler:mail', href: miaMailTo, target: '_blank' },
   ],
   footNote: `
     Made by <a class="text-blue-600 underline dark:text-muted" href="https://www.linkedin.com/in/kcancara/" target="_blank"> Karel Čančara</a> · All rights reserved.
