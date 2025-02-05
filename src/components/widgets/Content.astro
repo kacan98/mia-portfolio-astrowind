@@ -15,6 +15,7 @@ const {
   items = [],
   columns,
   image = await Astro.slots.render('image'),
+  imageSlot = await Astro.slots.render('imageSlot'),
   isReversed = false,
   isAfterContent = false,
 
@@ -23,6 +24,10 @@ const {
   classes = {},
   bg = await Astro.slots.render('bg'),
 } = Astro.props;
+
+if (imageSlot && image) {
+  throw new Error('You can only use one of `image` or `imageSlot` props');
+}
 ---
 
 <WidgetWrapper
@@ -84,6 +89,15 @@ const {
                   {...image}
                 />
               )}
+            </div>
+          )
+        }
+        {
+          imageSlot && (
+            <div class="relative m-auto max-w-4xl">
+              <slot name="imageSlot">
+                <Fragment set:html={imageSlot} />
+              </slot>
             </div>
           )
         }

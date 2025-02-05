@@ -12,12 +12,4 @@ const imagesGlob = import.meta.glob<{ default: ImageMetadata }>('/src/assets/ima
 const imageSrc = '/src/assets/images/publiceradi/' + imageName;
 ---
 
-<Image src={imagesGlob[imageSrc]()} alt="Gallery image" class="responsive-image px-3" />
-
-<style>
-  .responsive-image {
-    max-width: 300px;
-    max-height: 300px;
-    object-fit: contain;
-  }
-</style>
+<Image src={imagesGlob[imageSrc]()} alt="Gallery image" class="object-contain max-w-[300px] max-h-[300px] px-3" />
