@@ -42,7 +42,9 @@ const {
       }
     </div>
   </div>
-  <div class="relative image-gallery display:flex flex-wrap gap:10 justify-center m-5 z-10">
+  <div
+    class="relative image-gallery display:flex flex-wrap gap:10 justify-center m-5 z-10 dark:brightness-0 dark:invert"
+  >
     <a href="https://www.gp.se/eeed57ca-82d4-43fb-96d6-1db123b4004d" target="_blank">
       <DynamicImage imageName="gp.png" />
     </a>
@@ -68,6 +70,10 @@ const {
   .image-gallery img {
     max-width: 100%;
     height: auto;
+  }
+
+  .class {
+    filter: brightness(0) invert(1);
   }
 
   a {
