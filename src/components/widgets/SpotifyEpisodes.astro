@@ -1,0 +1,114 @@
+---
+import { GET as getUnormalaNormalaEpisodes } from 'src/pages/api/spotify-episodes';
+import type { ShowEpisodesResponse } from '~/pages/api/spotify.types';
+import { Icon } from 'astro-icon/components';
+import Headline from '../ui/Headline.astro';
+import WidgetWrapper from '../ui/WidgetWrapper.astro';
+
+const response = await getUnormalaNormalaEpisodes(Astro);
+const data: ShowEpisodesResponse = await response.json();
+
+const { items } = data;
+
+const {
+  tagline = await Astro.slots.render('tagline'),
+  isBeforeContent,
+  isAfterContent,
+
+  id,
+  isDark = false,
+  classes = {},
+  bg = await Astro.slots.render('bg'),
+} = Astro.props;
+---
+
+<WidgetWrapper
+  id={id}
+  isDark={isDark}
+  containerClass={`${isBeforeContent ? 'md:pb-8 lg:pb-12' : ''} ${isAfterContent ? 'pt-0 md:pt-0 lg:pt-0' : ''} ${
+    classes?.container ?? ''
+  }`}
+  ignoreXPadding
+  bg={bg}
+>
+  <Headline
+    title="Mina Podcast Avsnitt"
+    subtitle='Här hittar du alla avsnitt från "Det Unormala Normala" podcasten.'
+    tagline={tagline}
+    classes={classes?.headline as Record<string, string>}
+  />
+
+  <div
+    class="pl-[40vw] py-5 flex flex-row overflow-x-auto cursor-grab"
+    onmousedown="this.style.cursor='grabbing';"
+    onmouseup="this.style.cursor='grab';"
+  >
+    {
+      items.map((episode) => {
+        const biggestImage = episode.images.reduce((prev, current) => (prev.width > current.width ? prev : current));
+        return (
+          <div class="border dark:border-gray-700 p-4 rounded-lg shadow-md w-[300px] mx-2 flex-shrink-0 flex flex-col justify-between bg-white dark:bg-slate-900">
+            <div>
+              <div class="flex flex-row items-center">
+                <img
+                  src={biggestImage.url}
+                  alt={episode.name + ' image'}
+                  width={biggestImage.width}
+                  height={biggestImage.height}
+                  class="w-1/3 max-w-[80px]"
+                />
+                <div class="ml-4">
+                  <p class="text-lg font-bold">{episode.name}</p>
+                  <p class="text-sm text-gray-600">Det Unormala Normala</p>
+                </div>
+              </div>
+              <div class="mt-4">
+                <p class="text-sm">{episode.description}</p>
+              </div>
+            </div>
+            <div class="mt-4">
+              <a href={episode.external_urls.spotify} target="_blank" rel="noopener noreferrer" class="text-blue-500">
+                <Icon name="tabler:player-play-filled" class="w-3 h-3 inline" />
+                Lyssna på Spotify
+              </a>
+            </div>
+          </div>
+        );
+      })
+    }
+  </div>
+</WidgetWrapper>
+
+<script>
+  const container = document.querySelector('.overflow-x-auto');
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  container?.addEventListener('mousedown', (e: MouseEvent) => {
+    isDown = true;
+    container?.classList.add('active');
+    startX = e.pageX - (container as HTMLElement)?.offsetLeft;
+    scrollLeft = container?.scrollLeft;
+  });
+
+  container?.addEventListener('mouseleave', () => {
+    isDown = false;
+    container?.classList.remove('active');
+  });
+
+  container?.addEventListener('mouseup', () => {
+    isDown = false;
+    container?.classList.remove('active');
+  });
+
+  container?.addEventListener('mousemove', (e: MouseEvent) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - (container as HTMLElement)?.offsetLeft;
+    const walk = (x - startX) * 1; //scroll-fast
+    if (container) {
+      container.scrollLeft = scrollLeft - walk;
+    }
+  });
+</script>

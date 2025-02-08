@@ -15,6 +15,7 @@ import Hero2 from '~/components/widgets/Hero2.astro';
 import { headerData } from '~/navigation';
 import Logos from '~/components/widgets/Logos.astro';
 import { miaMailTo } from '~/navigation';
+import SpotifyEpisodes from '~/components/widgets/SpotifyEpisodes.astro';
 
 const imagesAalborgFestival = import.meta.glob<{ default: ImageMetadata }>(
   '/src/assets/images/mia/Foto/Aalborg festival/*.{jpeg,jpg,png,gif}'
@@ -56,7 +57,6 @@ const metadata = {
   </Fragment>
 
   <!-- Hero2 Widget ******************* -->
-
   <Hero2
     id="hero"
     tagline="Frilansande journalist"
@@ -124,6 +124,12 @@ const metadata = {
     </Fragment> -->
   </Features3>
 
+  <SpotifyEpisodes id='podcast'>
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </SpotifyEpisodes>
+
   <!-- Content Widget **************** -->
 
   <Content
@@ -145,12 +151,12 @@ const metadata = {
       </h3>
       <GaleryButton imagesObj={imagesFotoUtstallning} />
     </Fragment>
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
     <Fragment slot="imageSlot">
       <PictureGalery imagesObj={imagesFotoUtstallning} />
     </Fragment>
+    <!-- <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment> -->
   </Content>
 
   <!-- Content Widget **************** -->
@@ -171,9 +177,9 @@ const metadata = {
       </h3>
       <GaleryButton imagesObj={imagesFrilagret} />
     </Fragment>
-    <Fragment slot="bg">
+    <!-- <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
+    </Fragment> -->
     <Fragment slot="imageSlot">
       <PictureGalery imagesObj={imagesFrilagret} />
     </Fragment>
@@ -198,9 +204,9 @@ const metadata = {
     <Fragment slot="imageSlot">
       <PictureGalery imagesObj={imagesSwinburne} />
     </Fragment>
-    <Fragment slot="bg">
+    <!-- <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
+    </Fragment> -->
   </Content>
 
   <Content
@@ -222,9 +228,9 @@ const metadata = {
     <Fragment slot="imageSlot">
       <PictureGalery imagesObj={imagesAalborgFestival} />
     </Fragment>
-    <Fragment slot="bg">
+    <!-- <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
+    </Fragment> -->
   </Content>
 
   <Content
@@ -246,9 +252,9 @@ const metadata = {
     <Fragment slot="imageSlot">
       <PictureGalery imagesObj={imagesRomadagen} />
     </Fragment>
-    <Fragment slot="bg">
+    <!-- <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
+    </Fragment> -->
   </Content>
 
   <!-- Steps Widget ****************** -->
@@ -305,9 +311,9 @@ const metadata = {
       },
     ]}
   >
-    <!-- <Fragment slot="bg">
+    <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment> -->
+    </Fragment>
   </CallToAction>
 
   <!-- BlogLatestPost Widget **************** -->
@@ -317,9 +323,9 @@ const metadata = {
     title="Senaste inläggen"
     information={`Här hittar du mina senaste inlägg. Klicka på länken nedan för att läsa fler.`}
   >
-    <Fragment slot="bg">
+    <!-- <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
+    </Fragment> -->
   </BlogLatestPosts>
 
   <Content
@@ -372,6 +378,9 @@ const metadata = {
       </p>
       <br />
       <p>Har du en historia att dela eller en idé att utforska? Hör av dig – jag är alltid redo för ett samtal!</p>
+    </Fragment>
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
   </Content>
 </Layout>

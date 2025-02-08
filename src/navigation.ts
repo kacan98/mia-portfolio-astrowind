@@ -11,8 +11,9 @@ export const miaMailTo = `mailto:miaasvensson@gmail.com?body=${encodeURIComponen
 
 export const headerData = {
   links: [
-    // { text: 'Hjem', href: '' },
+    { text: 'Hjem', href: '' },
     // { text: 'Resume', href: '/#resume' },
+    { text: 'Podcast', href: '/#podcast' },
     { text: 'Foto', href: '/#porfolio' },
     { text: 'Text', href: '/#inlägg' },
     { text: 'Om mig', href: '/#about' },
